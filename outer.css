@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.stars {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 
+    50px 100px #fff,
+    150px 200px #fff,
+    300px 400px #fff,
+    500px 100px #fff,
+    700px 300px #fff,
+    900px 600px #fff,
+    1200px 200px #fff,
+    1400px 500px #fff,
+    1600px 700px #fff,
+    1800px 400px #fff;
+  animation: twinkle 2s infinite alternate;
+}
+
+.stars::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 
+    100px 50px #fff,
+    200px 150px #fff,
+    400px 250px #fff,
+    600px 350px #fff,
+    800px 450px #fff,
+    1000px 550px #fff,
+    1300px 650px #fff,
+    1500px 750px #fff,
+    1700px 850px #fff,
+    1900px 950px #fff;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
