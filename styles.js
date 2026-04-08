@@ -1,49 +1,77 @@
 // Theme toggle helpers for all pages
-function getThemeStylesheetPath() {
+function getThemeStylesheetPath(theme) {
     const path = window.location.pathname;
-    if (path.includes('/weeks/')) {
-        return '../Lighttheme.css';
+    const isWeeks = path.includes('/weeks/');
+    if (theme === 'light') {
+        return isWeeks ? '../Lighttheme.css' : 'Lighttheme.css';
+    } else if (theme === 'dark') {
+        return isWeeks ? '../darktheme.css' : 'darktheme.css';
     }
-    return 'Lighttheme.css';
+    return '';
 }
 
-function ensureThemeStylesheet() {
+function ensureThemeStylesheet(theme) {
     let themeLink = document.getElementById('theme-stylesheet');
-    if (!themeLink) {
-        themeLink = document.createElement('link');
-        themeLink.id = 'theme-stylesheet';
-        themeLink.rel = 'stylesheet';
-        themeLink.href = getThemeStylesheetPath();
-        document.head.appendChild(themeLink);
+    const path = getThemeStylesheetPath(theme);
+    if (path) {
+        if (!themeLink) {
+            themeLink = document.createElement('link');
+            themeLink.id = 'theme-stylesheet';
+            themeLink.rel = 'stylesheet';
+            themeLink.href = path;
+            document.head.appendChild(themeLink);
+        } else {
+            themeLink.href = path;
+        }
+    } else {
+        // remove if no theme
+        if (themeLink) {
+            themeLink.remove();
+        }
     }
     return themeLink;
 }
 
-function updateThemeButton() {
-    const button = document.getElementById('theme-toggle-button');
-    if (!button) return;
-    const active = document.body.classList.contains('theme-light');
-    button.textContent = active ? 'Switch to default theme' : 'Switch to light theme';
+function updateThemeButtons() {
+    const toggleButton = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('homeschool-theme') || 'light';
+    if (toggleButton) {
+        toggleButton.textContent = currentTheme === 'light' ? 'Dark Theme' : 'Light Theme';
+    }
 }
 
-function setThemeLight(enabled) {
-    if (enabled) {
-        ensureThemeStylesheet();
+function setTheme(theme) {
+    if (theme === 'light') {
+        ensureThemeStylesheet('light');
         document.body.classList.add('theme-light');
+        document.body.classList.remove('theme-dark');
         document.documentElement.dataset.theme = 'light';
         localStorage.setItem('homeschool-theme', 'light');
-    } else {
+    } else if (theme === 'dark') {
+        ensureThemeStylesheet('dark');
         document.body.classList.remove('theme-light');
-        document.documentElement.dataset.theme = '';
-        localStorage.setItem('homeschool-theme', 'default');
+        document.body.classList.add('theme-dark');
+        document.documentElement.dataset.theme = 'dark';
+        localStorage.setItem('homeschool-theme', 'dark');
+    } else {
+        // default to light
+        ensureThemeStylesheet('light');
+        document.body.classList.add('theme-light');
+        document.body.classList.remove('theme-dark');
+        document.documentElement.dataset.theme = 'light';
+        localStorage.setItem('homeschool-theme', 'light');
     }
-    updateThemeButton();
+    updateThemeButtons();
 }
 
 function initializeThemeFromStorage() {
     const stored = localStorage.getItem('homeschool-theme');
     if (stored === 'light') {
-        setThemeLight(true);
+        setTheme('light');
+    } else if (stored === 'dark') {
+        setTheme('dark');
+    } else {
+        setTheme('light');
     }
 }
 
@@ -96,7 +124,7 @@ function animatePageExit(callback) {
     const overlay = createPageTransitionOverlay();
     document.body.classList.add('page-exiting');
     overlay.classList.add('visible');
-    setTimeout(callback, 650);
+    setTimeout(callback, 500);
 }
 
 function handleLinkTransitions() {
@@ -126,7 +154,7 @@ function handleScroll() {
         window.requestAnimationFrame(() => {
             revealOnScroll();
             scrollRequested = false;
-        });
+        }); 
     }
 }
 
@@ -138,12 +166,14 @@ function initializeScrollBehavior() {
 }
 
 function initializeThemeToggle() {
-    const button = document.getElementById('theme-toggle-button');
-    if (!button) return;
-    button.addEventListener('click', function () {
-        const hasLight = document.body.classList.contains('theme-light');
-        setThemeLight(!hasLight);
-    });
+    const toggleButton = document.getElementById('theme-toggle');
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function () {
+            const currentTheme = localStorage.getItem('homeschool-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+    }
     initializeThemeFromStorage();
 }
 
@@ -152,7 +182,7 @@ function initializeThemeToggle() {
 document.addEventListener('DOMContentLoaded', function () {
     const footerHTML = `<footer>
     <div class="container">
-        <button id="theme-toggle-button" class="theme-toggle-button" type="button">Switch to light theme</button>
+        <button id="theme-toggle" class="theme-toggle-button" type="button">Dark Theme</button>
         <p>Designed in 2026 by:</p>
         <p>Ilona Arias - Student<br>
             Manuel Nino - Student<br>

@@ -1,0 +1,154 @@
+/* Dark Theme: Dark blues, black, and dark sky grey gradient.
+   Use JavaScript to toggle this theme by adding a theme-dark class to <body>
+   or setting html[data-theme='dark'].
+*/
+
+:root {
+    --theme-bg: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
+    --theme-surface: #1a2332;
+    --theme-border: #2a3441;
+    --theme-text: #e1e8ed;
+    --theme-text-secondary: #8899a6;
+    --theme-muted: #657786;
+    --theme-accent: #1da1f2;
+    --theme-accent-soft: #141d26;
+    --theme-shadow: 0 18px 45px rgba(0, 0, 0, 0.3);
+    --theme-radius: 18px;
+    --theme-transition: 220ms ease;
+}
+
+html[data-theme='dark'] body,
+body.theme-dark {
+    background: var(--theme-bg);
+    background-attachment: fixed;
+    color: var(--theme-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    transition: background var(--theme-transition), color var(--theme-transition);
+}
+
+html[data-theme='dark'] *,
+body.theme-dark * {
+    transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+html[data-theme='dark'] a,
+body.theme-dark a {
+    color: var(--theme-accent);
+    text-decoration: none;
+}
+
+html[data-theme='dark'] a:hover,
+body.theme-dark a:hover,
+html[data-theme='dark'] a:focus,
+body.theme-dark a:focus {
+    color: #4c9ee7;
+}
+
+html[data-theme='dark'] button,
+body.theme-dark button,
+html[data-theme='dark'] input,
+body.theme-dark input,
+html[data-theme='dark'] textarea,
+body.theme-dark textarea,
+html[data-theme='dark'] select,
+body.theme-dark select {
+    border-radius: var(--theme-radius);
+    transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+html[data-theme='dark'] button,
+body.theme-dark button {
+    background-color: var(--theme-surface);
+    color: var(--theme-text);
+    border: 1px solid var(--theme-border);
+    box-shadow: var(--theme-shadow);
+    padding: 0.85rem 1.4rem;
+    cursor: pointer;
+}
+
+html[data-theme='dark'] button:hover,
+body.theme-dark button:hover,
+html[data-theme='dark'] button:focus,
+body.theme-dark button:focus {
+    background-color: var(--theme-accent-soft);
+}
+
+html[data-theme='dark'] input,
+body.theme-dark input,
+html[data-theme='dark'] textarea,
+body.theme-dark textarea,
+html[data-theme='dark'] select,
+body.theme-dark select {
+    background-color: var(--theme-accent-soft);
+    border: 1px solid var(--theme-border);
+    color: var(--theme-text);
+    padding: 0.85rem 1rem;
+}
+
+html[data-theme='dark'] .card,
+body.theme-dark .card,
+html[data-theme='dark'] .container,
+body.theme-dark .container,
+html[data-theme='dark'] .panel,
+body.theme-dark .panel,
+html[data-theme='dark'] section,
+body.theme-dark section,
+html[data-theme='dark'] article,
+body.theme-dark article {
+    background-color: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--theme-radius);
+    box-shadow: var(--theme-shadow);
+    padding: 1.6rem;
+}
+
+html[data-theme='dark'] h1,
+body.theme-dark h1,
+html[data-theme='dark'] h2,
+body.theme-dark h2,
+html[data-theme='dark'] h3,
+body.theme-dark h3,
+html[data-theme='dark'] h4,
+body.theme-dark h4,
+html[data-theme='dark'] h5,
+body.theme-dark h5,
+html[data-theme='dark'] h6,
+body.theme-dark h6 {
+    color: var(--theme-text);
+    letter-spacing: 0.02em;
+}
+
+html[data-theme='dark'] h1,
+body.theme-dark h1 {
+    font-size: clamp(2rem, 2.5vw, 3rem);
+}
+
+html[data-theme='dark'] p,
+body.theme-dark p,
+html[data-theme='dark'] ul,
+body.theme-dark ul,
+html[data-theme='dark'] ol,
+body.theme-dark ol,
+html[data-theme='dark'] dl,
+body.theme-dark dl {
+    color: var(--theme-text-secondary);
+    line-height: 1.75;
+}
+
+html[data-theme='dark'] ::selection,
+body.theme-dark ::selection {
+    background-color: var(--theme-accent);
+    color: #ffffff;
+}
+
+html[data-theme='dark'] .shadow-soft,
+body.theme-dark .shadow-soft {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* JS can update these variables directly for dynamic theming */
+
+/* Example:
+   document.documentElement.dataset.theme = 'dark';
+   document.documentElement.style.setProperty('--theme-bg', 'linear-gradient(...)');
+*/
