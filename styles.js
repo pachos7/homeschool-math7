@@ -6,6 +6,10 @@ function getThemeStylesheetPath(theme) {
         return isWeeks ? '../Lighttheme.css' : 'Lighttheme.css';
     } else if (theme === 'dark') {
         return isWeeks ? '../darktheme.css' : 'darktheme.css';
+    } else if (theme === 'gothic') {
+        return isWeeks ? '../goththeme.css' : 'goththeme.css';
+    } else if (theme === 'scifi') {
+        return isWeeks ? '../scifitheme.css' : 'scifitheme.css'; // Ensure this path is correct
     }
     return '';
 }
@@ -36,7 +40,15 @@ function updateThemeButtons() {
     const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('homeschool-theme') || 'light';
     if (toggleButton) {
-        toggleButton.textContent = currentTheme === 'light' ? 'Dark Theme' : 'Light Theme';
+        if (currentTheme === 'light') {
+            toggleButton.textContent = 'Dark Theme';
+        } else if (currentTheme === 'dark') {
+            toggleButton.textContent = 'Gothic Theme';
+        } else if (currentTheme === 'gothic') {
+            toggleButton.textContent = 'Sci-Fi Theme';
+        } else if (currentTheme === 'scifi') {
+            toggleButton.textContent = 'Light Theme';
+        }
     }
 }
 
@@ -44,20 +56,32 @@ function setTheme(theme) {
     if (theme === 'light') {
         ensureThemeStylesheet('light');
         document.body.classList.add('theme-light');
-        document.body.classList.remove('theme-dark');
+        document.body.classList.remove('theme-dark', 'theme-gothic', 'theme-sci-fi');
         document.documentElement.dataset.theme = 'light';
         localStorage.setItem('homeschool-theme', 'light');
     } else if (theme === 'dark') {
         ensureThemeStylesheet('dark');
-        document.body.classList.remove('theme-light');
         document.body.classList.add('theme-dark');
+        document.body.classList.remove('theme-light', 'theme-gothic', 'theme-sci-fi');
         document.documentElement.dataset.theme = 'dark';
         localStorage.setItem('homeschool-theme', 'dark');
+    } else if (theme === 'gothic') {
+        ensureThemeStylesheet('gothic');
+        document.body.classList.add('theme-gothic');
+        document.body.classList.remove('theme-light', 'theme-dark', 'theme-sci-fi');
+        document.documentElement.dataset.theme = 'gothic';
+        localStorage.setItem('homeschool-theme', 'gothic');
+    } else if (theme === 'scifi') {
+        ensureThemeStylesheet('scifi');
+        document.body.classList.add('theme-sci-fi');
+        document.body.classList.remove('theme-light', 'theme-dark', 'theme-gothic');
+        document.documentElement.dataset.theme = 'scifi';
+        localStorage.setItem('homeschool-theme', 'scifi');
     } else {
-        // default to light
+        // Default to light theme
         ensureThemeStylesheet('light');
         document.body.classList.add('theme-light');
-        document.body.classList.remove('theme-dark');
+        document.body.classList.remove('theme-dark', 'theme-gothic', 'theme-sci-fi');
         document.documentElement.dataset.theme = 'light';
         localStorage.setItem('homeschool-theme', 'light');
     }
@@ -70,6 +94,10 @@ function initializeThemeFromStorage() {
         setTheme('light');
     } else if (stored === 'dark') {
         setTheme('dark');
+    } else if (stored === 'gothic') {
+        setTheme('gothic');
+    } else if (stored === 'scifi') {
+        setTheme('scifi');
     } else {
         setTheme('light');
     }
@@ -154,7 +182,7 @@ function handleScroll() {
         window.requestAnimationFrame(() => {
             revealOnScroll();
             scrollRequested = false;
-        }); 
+        });
     }
 }
 
@@ -170,7 +198,16 @@ function initializeThemeToggle() {
     if (toggleButton) {
         toggleButton.addEventListener('click', function () {
             const currentTheme = localStorage.getItem('homeschool-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            let newTheme;
+            if (currentTheme === 'light') {
+                newTheme = 'dark';
+            } else if (currentTheme === 'dark') {
+                newTheme = 'gothic';
+            } else if (currentTheme === 'gothic') {
+                newTheme = 'scifi';
+            } else {
+                newTheme = 'light';
+            }
             setTheme(newTheme);
         });
     }
@@ -178,7 +215,6 @@ function initializeThemeToggle() {
 }
 
 // Load footer dynamically on all pages
-// Footer HTML is embedded here to avoid CORS issues when opening files directly from file system
 document.addEventListener('DOMContentLoaded', function () {
     const footerHTML = `<footer>
     <div class="container">
