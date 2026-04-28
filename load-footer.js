@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <button id="theme-toggle-button" class="theme-toggle-button" type="button">Switch to light theme</button>
         <p>Designed in 2026 by:</p>
         <p>Ilona Arias - Student<br>
-            Manuel Nino - Student, a guy who likes to code and poo<br>
+            Manuel Nino - Student, a guy who likes to code and die<br>
             Francisco Nino - Instructor</p>
     </div>
 </footer>`;
