@@ -1,0 +1,109 @@
+/* Gothic Theme: Dark reds, black, and flickering letters.
+   Use JavaScript to toggle this theme by adding a theme-goth class to <body>
+   or setting html[data-theme='goth'].
+*/
+:root {
+    --theme-gothic-bg: black;
+    --theme-gothic-text: red;
+    --theme-gothic-text-secondary: rgb(212, 28, 65);
+    --theme-gothic-border: darkred;
+    --theme-gothic-link: rgb(255, 180, 4);
+    --theme-gothic-link-hover: goldenrod;
+    --theme-gothic-button-bg: #782222;
+    --theme-gothic-button-text: #0f0000;
+    --theme-spacing-xs: 0.5rem;
+    --theme-spacing-sm: 1rem;
+    --theme-spacing-md: 1.5rem;
+    --theme-spacing-lg: 2rem;
+    --theme-spacing-xl: 3rem;
+    --theme-max-width: 800px;
+}
+
+html[data-theme='gothic'] body,
+body.theme-gothic {
+    background-color: var(--theme-gothic-bg);
+    color: var(--theme-gothic-text);
+    font-family: 'Gothic A1', 'Papyrus', 'Almendra', 'Cinzel';
+    transition: background-color var(--theme-transition), color var(--theme-transition);
+}
+
+html[data-theme='gothic'] *,
+body.theme-gothic * {
+    transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+html[data-theme='gothic'] a,
+body.theme-gothic a {
+    color: var(--theme-gothic-link);
+    text-decoration: none;
+}
+
+html[data-theme='gothic'] a:hover,
+body.theme-gothic a:hover,
+html[data-theme='gothic'] a:focus,
+body.theme-gothic a:focus {
+    color: var(--theme-gothic-link-hover);
+}
+
+html[data-theme='gothic'] button,
+body.theme-gothic button {
+    background-color: var(--theme-gothic-button-bg);
+    color: var(--theme-gothic-button-text);
+    border: 1px solid var(--theme-gothic-border);
+    box-shadow: var(--theme-shadow);
+    padding: var(--theme-spacing-sm) var(--theme-spacing-md);
+    cursor: pointer;
+    transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+html[data-theme='gothic'] button:hover,
+body.theme-gothic button:hover,
+html[data-theme='gothic'] button:focus,
+body.theme-gothic button:focus {
+    background-color: var(--theme-gothic-link-hover);
+}
+
+html[data-theme='gothic'] .card,
+body.theme-gothic .card,
+html[data-theme='gothic'] .container,
+body.theme-gothic .container,
+html[data-theme='gothic'] .panel,
+body.theme-gothic .panel,
+html[data-theme='gothic'] section,
+body.theme-gothic section,
+html[data-theme='gothic'] article,
+body.theme-gothic article {
+    background-color: var(--theme-gothic-bg);
+    border: 1px solid var(--theme-gothic-border);
+    border-radius: var(--theme-radius);
+    box-shadow: var(--theme-shadow);
+    padding: var(--theme-spacing-lg);
+}
+
+html[data-theme='gothic'] h1,
+body.theme-gothic h1,
+html[data-theme='gothic'] h2,
+body.theme-gothic h2,
+html[data-theme='gothic'] h3,
+body.theme-gothic h3,
+html[data-theme='gothic'] h4,
+body.theme-gothic h4,
+html[data-theme='gothic'] h5,
+body.theme-gothic h5,
+html[data-theme='gothic'] h6,
+body.theme-gothic h6 {
+    color: var(--theme-gothic-text);
+    letter-spacing: 0.02em;
+}
+
+html[data-theme='gothic'] p,
+body.theme-gothic p,
+html[data-theme='gothic'] ul,
+body.theme-gothic ul,
+html[data-theme='gothic'] ol,
+body.theme-gothic ol,
+html[data-theme='gothic'] dl,
+body.theme-gothic dl {
+    color: var(--theme-gothic-text-secondary);
+    line-height: 1.75;
+}

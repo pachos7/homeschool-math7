@@ -1,0 +1,109 @@
+/* Sci-Fi Theme: Neon colors, black, and space-inspired letters. */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&display=swap');
+
+:root {
+    --theme-sci-fi-bg: black;
+    --theme-sci-fi-text: #39ff14; /* Bright neon green */
+    --theme-sci-fi-text-secondary: #0ff; /* Neon cyan */
+    --theme-sci-fi-border: #3407ff; /* Neon blue */
+    --theme-sci-fi-link: #fffb00; /* Neon yellow */
+    --theme-sci-fi-link-hover: #ff00ff; /* Neon magenta */
+    --theme-sci-fi-button-bg: #3407ff; /* Neon blue */
+    --theme-sci-fi-button-text: #6a00ff; /* White text */
+    --theme-spacing-xs: 0.5rem;
+    --theme-spacing-sm: 1rem;
+    --theme-spacing-md: 1.5rem;
+    --theme-spacing-lg: 2rem;
+    --theme-spacing-xl: 3rem;
+    --theme-max-width: 800px;
+}
+
+html[data-theme='sci-fi'] body,
+body.theme-sci-fi {
+    background-color: var(--theme-sci-fi-bg);
+    color: var(--theme-sci-fi-text);
+    font-family: 'Orbitron', 'Audiowide', 'Trebuchet MS', 'Courier New', sans-serif !important;
+    transition: background-color var(--theme-transition), color var(--theme-transition);
+}
+
+html[data-theme='sci-fi'] *,
+body.theme-sci-fi * {
+    transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+html[data-theme='sci-fi'] a,
+body.theme-sci-fi a {
+    color: var(--theme-sci-fi-link);
+    text-decoration: none;
+}
+
+html[data-theme='sci-fi'] a:hover,
+body.theme-sci-fi a:hover,
+html[data-theme='sci-fi'] a:focus,
+body.theme-sci-fi a:focus {
+    color: var(--theme-sci-fi-link-hover);
+}
+
+html[data-theme='sci-fi'] button,
+body.theme-sci-fi button {
+    background-color: var(--theme-sci-fi-button-bg);
+    color: var(--theme-sci-fi-button-text);
+    border: 1px solid var(--theme-sci-fi-border);
+    box-shadow: var(--theme-shadow);
+    padding: var(--theme-spacing-sm) var(--theme-spacing-md);
+    cursor: pointer;
+    transition: background-color var(--theme-transition), color var(--theme-transition), border-color var(--theme-transition), box-shadow var(--theme-transition);
+}
+
+html[data-theme='sci-fi'] button:hover,
+body.theme-sci-fi button:hover,
+html[data-theme='sci-fi'] button:focus,
+body.theme-sci-fi button:focus {
+    background-color: var(--theme-sci-fi-link-hover);
+}
+
+html[data-theme='sci-fi'] .card,
+body.theme-sci-fi .card,
+html[data-theme='sci-fi'] .container,
+body.theme-sci-fi .container,
+html[data-theme='sci-fi'] .panel,
+body.theme-sci-fi .panel,
+html[data-theme='sci-fi'] section,
+body.theme-sci-fi section,
+html[data-theme='sci-fi'] article,
+body.theme-sci-fi article {
+    background-color: var(--theme-sci-fi-bg);
+    border: 1px solid var(--theme-sci-fi-border);
+    border-radius: var(--theme-radius);
+    box-shadow: var(--theme-shadow);
+    padding: var(--theme-spacing-lg);
+}
+
+html[data-theme='sci-fi'] h1,
+body.theme-sci-fi h1,
+html[data-theme='sci-fi'] h2,
+body.theme-sci-fi h2,
+html[data-theme='sci-fi'] h3,
+body.theme-sci-fi h3,
+html[data-theme='sci-fi'] h4,
+body.theme-sci-fi h4,
+html[data-theme='sci-fi'] h5,
+body.theme-sci-fi h5,
+html[data-theme='sci-fi'] h6,
+body.theme-sci-fi h6 {
+    color: var(--theme-sci-fi-text);
+    letter-spacing: 0.02em;
+}
+
+html[data-theme='sci-fi'] p,
+body.theme-sci-fi p,
+html[data-theme='sci-fi'] ul,
+body.theme-sci-fi ul,
+html[data-theme='sci-fi'] ol,
+body.theme-sci-fi ol,
+html[data-theme='sci-fi'] dl,
+body.theme-sci-fi dl {
+    color: var(--theme-sci-fi-text-secondary);
+    line-height: 1.75;
+}

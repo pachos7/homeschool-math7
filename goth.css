@@ -14,7 +14,7 @@
     font-family: 'Gothic A1', 'Papyrus', 'Almendra', 'Cinzel';
     --color-text:red;
     --color-text-secondary: rgb(212, 28, 65); 
-    --color-border: #060000;
+    --color-border: darkred;
     --color-link: rgb(255, 180, 4);
     --color-link-hover: goldenrod;
     --color-button-bg:  #782222;
