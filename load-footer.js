@@ -3,8 +3,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const footerHTML = `<footer>
     <div class="container">
-        <p>Designed in 2025 by:</p>
-        <p>Ilona Arias - Student<br>
+        <p>Designed in 2025 by: Multiple people</p>
+        <p>Ilona Arias - Student Magic jhonson <br>
             Manuel Nino - Student<br>
             Francisco Nino - Instructor</p>
     </div>
