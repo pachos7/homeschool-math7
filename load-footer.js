@@ -3,10 +3,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     const footerHTML = `<footer>
     <div class="container">
-        <p>Designed in 2025 by:</p>
-        <p>Ilona Arias - Student<br>
-            Manuel Nino - Student<br>
-            Francisco Nino - Instructor</p>
+        <p>Designed in year 2025 by:</p>
+        <p>Ilona Arias - Student star<br>
+            Manuel Nino - Student star<br>
+            Francisco Nino - Master Instructor</p>
     </div>
 </footer>`;
 
